@@ -9,7 +9,7 @@ client.connect();
 router.get('/all', async function(req, res, next) {
     try{
         let arrayAll = [];
-        let all = await client.query(`SELECT * FROM products`,[]);
+        let all = await client.query(`SELECT id, email, city, price, prod_title, prod_desc FROM products`,[]);
         if(all.rowCount > 0){
             for (let el of all.rows){
                 arrayAll.push(el)
