@@ -8,15 +8,12 @@ client.connect();
 router.put('/edit', async function(req, res, next) {
     try {
         let id = req.query.id;
-        let name = req.body.name;
-        let surname = req.body.surname;
         let email = req.body.email;
         let city = req.body.city;
-        let zip = req.body.zip;
         let prodTitle = req.body.prodTitle;
         let prodDesc = req.body.prodDesc;
         let price = req.body.price;
-        let result = await client.query(`UPDATE products SET name = $1, surname = $2, email = $3, city = $4, zip = $5, prod_title = $6, prod_desc = $7, price = $8 WHERE id = $9`,[name, surname, email, city, zip, prodTitle, prodDesc, price, id]);
+        let result = await client.query(`UPDATE products SET email = $1, city = $2, prod_title = $3, prod_desc = $4, price = $5 WHERE id = $6`,[email, city, prodTitle, prodDesc, price, id]);
         if(result.rowCount > 0){
             res.send("Το προϊόν τροποποιήθηκε επιτυχώς.");
         } else {
