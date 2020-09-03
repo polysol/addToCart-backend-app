@@ -10,6 +10,7 @@ var editRouter = require('./routes/edit');
 var removeRouter = require('./routes/remove');
 var allRouter = require('./routes/all');
 var cartAllRouter = require('./routes/cartAll');
+var getProduct = require('./routes/getProduct');
 var cors = require('cors');
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/', editRouter);
 app.use('/', removeRouter);
 app.use('/', allRouter);
 app.use('/', cartAllRouter);
+app.use('/', getProduct);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
