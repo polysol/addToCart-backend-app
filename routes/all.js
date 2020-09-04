@@ -5,7 +5,6 @@ const pgConnInfo = require('../lib/config').pgConnInfo;
 const client = new Client(pgConnInfo);
 client.connect();
 
-/* GET home page. */
 router.get('/all', async function(req, res, next) {
     try{
         let arrayAll = [];
@@ -14,12 +13,13 @@ router.get('/all', async function(req, res, next) {
             for (let el of all.rows){
                 arrayAll.push(el)
             }
-            res.send(arrayAll);
+            res.status(200).send(arrayAll);
         } else {
-            res.send([]);
+            res.status(200).send([]);
         }
     } catch (e) {
-        console.log(e);
+        res.status(500);
+        console.error(e);
     }});
 
 module.exports = router;

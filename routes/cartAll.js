@@ -13,12 +13,13 @@ router.get('/cartAll', async function(req, res, next) {
             for (let el of cartAll.rows){
                 arrayCartAll.push(el)
             }
-            res.send(arrayCartAll);
+            res.status(200).send(arrayCartAll);
         } else {
-            res.send([]);
+            res.status(200).send([]);
         }
     } catch (e) {
-        console.log(e);
+        res.status(500);
+        console.error(e);
     }});
 
 module.exports = router;

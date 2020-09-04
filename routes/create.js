@@ -18,11 +18,14 @@ router.post('/create', async function(req, res, next) {
         let result = await client.query(`INSERT INTO products (name, surname, email, city, zip, prod_title, prod_desc, price)
                      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,[name, surname, email, city, zip, prodTitle, prodDesc, price]);
         if(result.rowCount > 0){
-            res.send("Το προϊόν καταχωρήθηκε επιτυχώς.");
+            res.status(200).send(result);
         } else {
-            res.send("Η εγγραφή απέτυχε.");
+            res.status(200).send("Η εγγραφή απέτυχε.");
         }
-    }catch (e) {console.log(e);}
+    }catch (e) {
+        res.status(500);
+        console.error(e);
+    }
 });
 
 module.exports = router;

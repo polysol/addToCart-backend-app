@@ -10,10 +10,13 @@ router.post('/add', async function(req, res, next) {
         let id = req.query.id;
         let result = await client.query(`INSERT INTO cart (id) VALUES ($1)`,[id]);
         if(result.rowCount > 0){
-            res.send("Το προϊόν προστέθηκε στο καλάθι επιτυχώς.");
+            res.status(200).send("Το προϊόν προστέθηκε στο καλάθι επιτυχώς.");
         } else {
-            res.send("Η προσθήκη στο καλάθι απέτυχε.");
+            res.status(200).send("Η προσθήκη στο καλάθι απέτυχε.");
         }
-    }catch (e) {console.log(e);}
+    }catch (e) {
+        res.status(500);
+        console.error(e);
+    }
 });
 module.exports = router;
