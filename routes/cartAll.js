@@ -11,7 +11,7 @@ router.get('/cartAll', async function(req, res, next) {
         let cartAll = await client.query(`SELECT id, prod_title, prod_desc, price FROM products WHERE id = any(SELECT id from cart)`,[]);
         if(cartAll.rowCount > 0){
             for (let el of cartAll.rows){
-                arrayCartAll.push(el)
+                arrayCartAll.push(el);
             }
             res.status(200).send(arrayCartAll);
         } else {

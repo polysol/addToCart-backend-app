@@ -11,7 +11,7 @@ router.get('/all', async function(req, res, next) {
         let all = await client.query(`SELECT id, prod_title, prod_desc, price, email, city FROM products`,[]);
         if(all.rowCount > 0){
             for (let el of all.rows){
-                arrayAll.push(el)
+                arrayAll.push(el);
             }
             res.status(200).send(arrayAll);
         } else {

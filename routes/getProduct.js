@@ -9,9 +9,9 @@ router.get('/getProduct', async function(req, res, next) {
     try{
         let id = req.query.id;
         let product = await client.query(`SELECT * FROM products where id = $1`,[id]);
-        res.status(200).send(product.rows[0])
+        res.status(200).send(product.rows[0]);
     } catch (e) {
-        res.status(500)
+        res.status(500);
         console.error(e);
     }});
 

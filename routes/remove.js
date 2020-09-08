@@ -15,7 +15,7 @@ router.delete('/remove', async function(req, res, next) {
             res.status(200).send("Το προϊόν δε βρέθηκε στο καλάθι αγορών.");
         }
     } catch (e) {
-        res.status(500)
+        res.status(500);
         console.error(e);
     }
 });
